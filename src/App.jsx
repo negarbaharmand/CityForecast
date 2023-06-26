@@ -1,11 +1,10 @@
 import { useState } from "react";
-// import axios from axios;
+import axios from "axios";
 
 function App() {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q={location}&appid=${
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${
     import.meta.env.VITE_API_KEY
   } `;
 
@@ -20,6 +19,15 @@ function App() {
   return (
     <>
       <div className="app">
+        <div className="search">
+          <input
+            value={location}
+            onChange={(event) => setLocation(event.target.value)}
+            placeholder="Enter Location"
+            onKeyPress={searchLocation}
+            type="text"
+          />
+        </div>
         <div className="container">
           <div className="top">
             <div className="location">
