@@ -6,7 +6,7 @@ function App() {
   const [location, setLocation] = useState("");
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${
     import.meta.env.VITE_API_KEY
-  } `;
+  }&units=metric`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
@@ -31,10 +31,10 @@ function App() {
         <div className="container">
           <div className="top">
             <div className="location">
-              <p>Växjö</p>
+              <p>{data.name}</p>
             </div>
             <div className="temp">
-              <h1 className="bold">23°C</h1>
+              {data.main ? <h1>{data.main.temp}°C</h1> : null}
             </div>
             <div className="description">
               <p>Clouds</p>
